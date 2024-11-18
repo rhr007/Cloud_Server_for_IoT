@@ -9,12 +9,30 @@ const SignUp = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  function createAccount(e){
+    e.preventDefault();
+    if(password != confirmPassword){
+      alert("Password did not match.")
+    }
+
+    else{
+      const userData = {
+        first_name: firstName,
+        last_name: lasttName,
+        email: email,
+        insttitution: insttitution,
+        password: password
+      }
+      console.log(userData);
+    }
+  }
+
   return (
     <div className={styles.mainContainer}>
 
         <h2 className={styles.headline}>Register Your Account</h2>
 
-        <form className={styles.inputs}>
+        <form className={styles.inputs} onSubmit={createAccount}>
             <input type="text" placeholder='First Name' required onChange={(e) => setFirstName(e.target.value)}/>
             <input type="text" placeholder='Last Name' required onChange={(e) => setLastName(e.target.value)}/>
             <input type="email" placeholder='Email' required onChange={(e) => setEmail(e.target.value)}/>

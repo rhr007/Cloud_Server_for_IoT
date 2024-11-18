@@ -2,11 +2,8 @@
     margin-top: 10%;
     border: 1px dashed black;
     border-radius: 10px;
-    background-color: rgb(229, 238, 245);
-    
+    background-color: rgb(229, 238, 245);  
     justify-items: center;
-    /* display: flex; */
-    
     margin-left: 25%;
     margin-right: 25%;
     padding-bottom: 2%;
@@ -16,10 +13,8 @@
 
 
 .inputs{
-
     justify-items: center;
     width: 65%;
-    
 }
 
 
