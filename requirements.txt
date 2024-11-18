@@ -1,0 +1,2 @@
+react --> npm create vite@latest
+react-router-dom
