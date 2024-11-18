@@ -1,0 +1,14 @@
+.mainContainer{
+    background-color: rgb(241, 236, 236);
+    top: 0;
+    text-align: center;
+    margin-top: auto;
+}
+hr{
+    border: 1px solid black;
+}
+
+.bduLink{
+    text-decoration: underline;
+    color: blue;
+}

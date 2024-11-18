@@ -6,6 +6,11 @@ body{
     font-family: 'Inter', sans-serif;
 
 }
+.app-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
 a{
     text-decoration: none;

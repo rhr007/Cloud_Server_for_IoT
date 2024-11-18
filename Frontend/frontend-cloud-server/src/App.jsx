@@ -9,12 +9,13 @@ import Contact from './components/Contact'
 import Feature from './components/Feature'
 import Home from './components/Home'
 import SignIn from './components/Signin'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className='app-container'>
       <Navbar />
       
       <Routes>
@@ -25,6 +26,8 @@ function App() {
         <Route path='signup' element={<SignUp />} />
         <Route path='signin' element={<SignIn />} />
       </Routes>
+
+      <Footer />
     </div>
   )
 }
