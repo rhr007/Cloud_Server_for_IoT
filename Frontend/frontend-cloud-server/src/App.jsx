@@ -4,10 +4,10 @@ import {Routes, Route} from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
-import About from './About'
+import About from './components/About'
 import Contact from './components/Contact'
-import Feature from './Feature'
-import Home from './Home'
+import Feature from './components/Feature'
+import Home from './components/Home'
 import SignIn from './components/Signin'
 
 function App() {
