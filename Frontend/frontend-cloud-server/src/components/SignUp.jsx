@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../components/SignUp.module.css'
+import axios from 'axios'
 const SignUp = () => {
 
   const [firstName, setFirstName] = useState('')
@@ -20,10 +21,40 @@ const SignUp = () => {
         first_name: firstName,
         last_name: lasttName,
         email: email,
-        insttitution: insttitution,
-        password: password
+        institution: insttitution,
+        password: password,
+        ac_created: 2024
       }
-      console.log(userData);
+
+      axios.post("http://192.168.1.104:8000/registration", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }).then(response => {
+        if(response.status == 201){
+          location.reload()
+          alert("Account Registration Successful")
+          window.location.href="signin"
+
+        }
+      }).catch(error => {
+        if(error.status == 400)
+        {
+          alert("This email is already Registered.")
+          
+        }
+      })
+
+    //   console.log(JSON.stringify(userData));
+    //   fetch ("http://192.168.1.104:8000/registration", {
+    //     method: "POST",
+    //         body: JSON.stringify(userData),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //           },
+    // }).then(res => res.json().then(data => console.log(data)))
+
+
     }
   }
 
