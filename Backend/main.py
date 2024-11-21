@@ -1,10 +1,11 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 from pydantic import BaseModel, EmailStr
 
+
 from database import engine
-from routers import registration
-from fastapi.middleware.cors import CORSMiddleware
+from routers import registration, signin
 
 app = FastAPI()
 
@@ -27,3 +28,4 @@ def on_startup():
 
 
 app.include_router(registration.router)
+app.include_router(signin.router)

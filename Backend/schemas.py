@@ -13,3 +13,8 @@ class RegistrationBody(BaseModel):
 
 class registrationResponse(BaseModel):
     email: EmailStr
+
+
+class SigninBody(BaseModel):
+    email: str
+    password: str
