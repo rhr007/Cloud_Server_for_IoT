@@ -5,7 +5,7 @@ from pydantic import BaseModel, EmailStr
 
 
 from database import engine
-from routers import registration, signin
+from routers import registration, signin, otp_actions
 
 app = FastAPI()
 
@@ -29,3 +29,4 @@ def on_startup():
 
 app.include_router(registration.router)
 app.include_router(signin.router)
+app.include_router(otp_actions.router)

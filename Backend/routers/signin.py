@@ -5,6 +5,7 @@ from datetime import datetime
 
 import schemas, models, hashing
 from database import get_db
+import JWT
 
 router = APIRouter(tags=["Sign In"])
 
@@ -15,5 +16,16 @@ def account_sign_in(request_body: schemas.SigninBody, db: Session = Depends(get_
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"message": "wrong credentials"})
     if not hashing.verify_password(request_body.password, user.password):
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"message": "wrong credentials"})
+
+    if not user.is_active:
+        return JSONResponse(status_code=status.HTTP_403_FORBIDDEN, content={"message": "not active"})
     
-    return JSONResponse(status_code=status.HTTP_200_OK, content={"message": "Token"})
+    data = {
+        'email': user.email,
+        'is_admin': user.is_admin,
+        'id': user.id
+    }
+    
+    access_token = JWT.create_access_token(data)
+    return schemas.Token(access_token=access_token, token_type="bearer")
+    # return JSONResponse(status_code=status.HTTP_200_OK, content={"message": "Token"})

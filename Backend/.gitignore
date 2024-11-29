@@ -1,1 +1,4 @@
 backend-iot-server
+SECRETS_INFO.py
+__pycache__
+routers/__pycache__

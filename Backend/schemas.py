@@ -18,3 +18,11 @@ class registrationResponse(BaseModel):
 class SigninBody(BaseModel):
     email: str
     password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class OTPBody(BaseModel):
+    email: EmailStr
+    otp: str
