@@ -8,15 +8,16 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Feature from './components/Feature'
 import Home from './components/Home'
-import SignIn from './components/Signin'
+import SignIn from './components/SignIn'
 import Footer from './components/Footer'
+import Activate from './components/Activate'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className='app-container'>
-      <Navbar />
+      {/* <Navbar /> */}
       
       <Routes>
         <Route path='home' element={<Home />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path='feature' element={<Feature />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='signin' element={<SignIn />} />
+        <Route path='activate' element={<Activate />} />
       </Routes>
 
       <Footer />

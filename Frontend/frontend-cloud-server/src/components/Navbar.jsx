@@ -11,17 +11,17 @@ const Navbar = () => {
 
         <div className={styles.listContainer}>
             <ul className={styles.navlist}>
-                <NavLink to='home'><li>Home</li></NavLink>
-                <NavLink to='feature'><li>Feature</li></NavLink>
-                <NavLink to='contact'><li>Contact</li></NavLink>
-                <NavLink to='about'><li>About</li></NavLink>
+                <NavLink to='/home'><li>Home</li></NavLink>
+                <NavLink to='/feature'><li>Feature</li></NavLink>
+                <NavLink to='/contact'><li>Contact</li></NavLink>
+                <NavLink to='/about'><li>About</li></NavLink>
             </ul>
         </div>
 
         <div className={styles.buttons}>
             <li className={styles.buttonList}>
-                <NavLink to='signin'><button className={styles.signin}>Sign In</button></NavLink>
-                <NavLink to='signup'><button className={styles.signup}>Sign Up</button></NavLink>
+                <NavLink to='/signin'><button className={styles.signin}>Sign In</button></NavLink>
+                <NavLink to='/signup'><button className={styles.signup}>Sign Up</button></NavLink>
             </li>
         </div>
 

@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from './Navbar';
 
 const Feature = () => {
   return (
-    <div className='container'>Feature</div>
+    <>
+      <Navbar />
+      <div className='container'>Feature</div>
+    </>
   );
 }
 
