@@ -5,12 +5,14 @@ import axios from 'axios'
 import styles from '../components/HomePageNavbar.module.css'
 import ProfileInfo from './ProfileInfo'
 import URL from '../URL'
+import { useNavigate } from 'react-router-dom'
 
 const HomePageNavbar = () => {
     const [isVisible, setIsVisible] = useState(false)
 
     const [token, setToken] = useState(sessionStorage.getItem("cloud-token") || '')
     const serverURL = `http://${URL()}:8000`
+    const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('')
     const [lasttName, setLastName] = useState('')
@@ -52,11 +54,20 @@ const HomePageNavbar = () => {
     function handleVisible(){
         setIsVisible(currentVisible => !currentVisible)
     }
+
+    function signOut(){
+        const isConfirmed = confirm("Are you sure, you want to sign out?")
+        if(isConfirmed){
+            sessionStorage.removeItem("cloud-token")
+            navigate('/signin')
+        }
+    }
+
   return (
     <>
         <div className={styles.mainContainer}>
             <p onClick={handleVisible}>Profile</p>
-            <button>Sign Out</button>
+            <button onClick={signOut}>Sign Out</button>
         </div>
 
         {isVisible ? <ProfileInfo firstName={firstName} lasttName={lasttName} email={email} institution={institution} acCreated={acCreated}/> : ""}
