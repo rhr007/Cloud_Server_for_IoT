@@ -5,9 +5,9 @@ from pydantic import BaseModel, EmailStr
 
 
 from database import engine
-from routers import registration, signin, otp_actions
+from routers import registration, signin, otp_actions, projects, active_user
 
-app = FastAPI()
+app = FastAPI(title="BDU Cloud Server Backend")
 
 origins = [
     "*"
@@ -30,3 +30,5 @@ def on_startup():
 app.include_router(registration.router)
 app.include_router(signin.router)
 app.include_router(otp_actions.router)
+app.include_router(projects.router)
+app.include_router(active_user.router)

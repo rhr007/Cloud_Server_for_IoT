@@ -28,11 +28,7 @@ const SignUp = () => {
         ac_created: 2024
       }
 
-      axios.post(serverURL, userData, {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      }).then(response => {
+      axios.post(serverURL, userData).then(response => {
         if(response.status == 201){
           location.reload()
           alert("Account Registration Successful")

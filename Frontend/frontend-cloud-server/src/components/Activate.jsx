@@ -1,11 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../components/Activate.module.css'
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import URL from '../URL';
+import axios from 'axios';
+
 const Activate = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const email = location.state.email;
+  // const location = useLocation();
   const [OTP, setOTP] = useState('');
+  const [email, setEmail] = useState(sessionStorage.getItem("email") || "");
+  const BACKEND_URL = `http://${URL()}:8000/otp`
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    
+    if(!email){
+      navigate("/signin");
+      // alert("no email error");
+    }
+    else{
+      axios.get(`${BACKEND_URL}/send/${email}`)
+      sessionStorage.removeItem("email")
+    }
+
+  }, [])
+
+  
+  // const email = location.state.email;
 
   function verifyEmail(e){
     e.preventDefault();
@@ -15,10 +36,19 @@ const Activate = () => {
       otp: OTP
     }
 
-    console.log(data);
+    axios.post(`${BACKEND_URL}/verify/`, data)
+    .then(response => {
+      if(response.status == 200)
+      {
+        alert("Account Activated Successfully.")
+        navigate('/signin')
+        
+      }
+    })
+    .catch(error => {
+      alert(`Server says "${error.response.data.message}"`)
+    })
   }
-
- 
 
     return (
       <div className={styles.mainContainer}>

@@ -33,8 +33,9 @@ const SignIn = () => {
         alert("Wrong Email or Password.")
       }
       if(error.status == 403){
-        alert("Your Account is not Active")
-        navigate('/activate', {state: {email: email}})
+        alert("Your Account is not Active");
+        sessionStorage.setItem("email", email)
+        navigate('/activate')
       }
     })
   }
