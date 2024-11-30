@@ -38,3 +38,11 @@ class ProjectCreateBody(BaseModel):
     name_of_sensors: list
     data_type_of_sensors: list
     created: datetime
+
+class ActiveUserData(BaseModel):
+    id: int
+    first_name: str
+    last_name: str
+    email: EmailStr
+    institution: str
+    ac_created: datetime

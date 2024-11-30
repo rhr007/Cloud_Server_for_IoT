@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Depends, status, HTTPException
 from fastapi.responses import JSONResponse
+from sqlmodel import Session
 
-import schemas, oauth2
+from database import get_db
+import schemas, models, oauth2
 
 def get_current_active_user(user_id:int = Depends(oauth2.get_current_user)):
     if not user_id:
@@ -9,6 +11,7 @@ def get_current_active_user(user_id:int = Depends(oauth2.get_current_user)):
     return user_id
 
 router = APIRouter(tags=["Active-User"])
-@router.get("/users/me/")
-def read_users_me(current_user = Depends(get_current_active_user)):
-    return current_user
+@router.get("/users/me/", response_model= schemas.ActiveUserData)
+def read_users_me(db: Session = Depends(get_db), user_id = Depends(get_current_active_user)):
+    user = db.get(models.User, user_id)
+    return user
