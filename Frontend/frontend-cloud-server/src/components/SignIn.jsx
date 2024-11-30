@@ -3,8 +3,10 @@ import styles from '../components/SignIn.module.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import URL from '../URL';
+
 const SignIn = () => {
-  const serverURL = "http://192.168.1.104:8000/signin";
+  const serverURL = `http://${URL()}:8000/signin`;
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('')
@@ -14,17 +16,19 @@ const SignIn = () => {
     e.preventDefault();
 
     const userData = {
-      email: email,
+      username: email,
       password: password
     }
     // console.log(userData);
     axios.post(serverURL, userData, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       }
     }).then(res => {
       if(res.status == 200){
-        console.log(res.data);
+        // console.log(res.data);
+        sessionStorage.setItem("cloud-token", res.data.access_token)
+        navigate('/dashboard')
 
       }
     }).catch(error => {

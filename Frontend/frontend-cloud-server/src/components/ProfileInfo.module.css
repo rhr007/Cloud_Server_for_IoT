@@ -1,0 +1,19 @@
+
+
+.profileMenu{
+    background-color: bisque;
+    height: 100%;
+    width: 35%;
+    position: fixed;
+    /* z-index: 50; */
+}
+
+.pictureContainer{
+    text-align: center;
+}
+
+.pictureContainer img{
+    margin-top: 3%;
+    border-radius: 50%;
+    border: 1px dashed black;
+}

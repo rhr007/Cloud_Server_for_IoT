@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styles from '../components/SignUp.module.css'
 import axios from 'axios'
 import Navbar from './Navbar';
+import URL from '../URL';
 const SignUp = () => {
-  const serverURL = "http://192.168.1.104:8000/registration";
+  const serverURL = `http://${URL()}:8000/registration`;
   
   const [firstName, setFirstName] = useState('')
   const [lasttName, setLastName] = useState('')

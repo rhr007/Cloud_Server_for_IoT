@@ -11,6 +11,7 @@ import Home from './components/Home'
 import SignIn from './components/SignIn'
 import Footer from './components/Footer'
 import Activate from './components/Activate'
+import Dashboard from './components/Dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
         <Route path='signup' element={<SignUp />} />
         <Route path='signin' element={<SignIn />} />
         <Route path='activate' element={<Activate />} />
+        <Route path='dashboard'element={<Dashboard />} />
       </Routes>
 
       <Footer />
