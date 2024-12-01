@@ -14,7 +14,6 @@ const Dashboard = () => {
     const navigate = useNavigate()
     const serverURL = URL()
     const [projects, setProjects] = useState([])
-    let project;
     
     useEffect(() => {
         if(!token){
@@ -71,12 +70,30 @@ const Dashboard = () => {
                 <p>Your Project List</p>
                 <button>Create Project</button>
             </div>
+            {projects.length > 0 ? 
             <table>
-                <th>Title</th>
-                <th>Project Key</th>
-                <th>Number of Sensors</th>
-                <th>Project Creation Date-Time</th>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Project Key</th>
+                        <th>Number of Sensors</th>
+                        <th>Project Creation Date-Time</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {(projects).map((project) => (
+                        <tr key={project.id}>
+                            <td>{project.title}</td>
+                            <td>{project.project_key}</td>
+                            <td>{project.number_of_sensors}</td>
+                            <td>{project.created}</td>
+                        </tr>
+                    ))}
+
+                </tbody>
             </table>
+            : <div> You have no projects to show</div> }
         </div>
         
 
