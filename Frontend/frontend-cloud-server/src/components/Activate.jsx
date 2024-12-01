@@ -9,7 +9,7 @@ const Activate = () => {
   // const location = useLocation();
   const [OTP, setOTP] = useState('');
   const [email, setEmail] = useState(sessionStorage.getItem("email") || "");
-  const BACKEND_URL = `http://${URL()}:8000/otp`
+  const BACKEND_URL = `${URL()}/otp`
 
   const navigate = useNavigate();
   useEffect(() => {

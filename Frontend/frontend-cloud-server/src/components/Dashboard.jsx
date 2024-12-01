@@ -12,7 +12,7 @@ import HomePageNavbar from './HomePageNavbar'
 const Dashboard = () => {
     const [token, setToken] = useState(sessionStorage.getItem("cloud-token") || '')
     const navigate = useNavigate()
-    const serverURL = `http://${URL()}:8000`
+    const serverURL = URL()
     
     useEffect(() => {
         if(!token){

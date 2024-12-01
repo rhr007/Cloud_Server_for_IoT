@@ -4,7 +4,7 @@ import axios from 'axios'
 import Navbar from './Navbar';
 import URL from '../URL';
 const SignUp = () => {
-  const serverURL = `http://${URL()}:8000/registration`;
+  const serverURL = `${URL()}/registration`;
   
   const [firstName, setFirstName] = useState('')
   const [lasttName, setLastName] = useState('')

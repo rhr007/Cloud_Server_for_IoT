@@ -11,7 +11,7 @@ const HomePageNavbar = () => {
     const [isVisible, setIsVisible] = useState(false)
 
     const [token, setToken] = useState(sessionStorage.getItem("cloud-token") || '')
-    const serverURL = `http://${URL()}:8000`
+    const serverURL = URL()
     const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('')

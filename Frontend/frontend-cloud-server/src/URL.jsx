@@ -1,6 +1,7 @@
 
 const URL = () => {
-  return "192.168.1.104"
+  const ip = "192.168.1.104"
+  return `http://${ip}:8000`
 }
 
 export default URL;

@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import URL from '../URL';
 
 const SignIn = () => {
-  const serverURL = `http://${URL()}:8000/signin`;
+  const serverURL = `${URL()}/signin`;
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('')
