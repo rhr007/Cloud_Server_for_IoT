@@ -46,3 +46,10 @@ class ActiveUserData(BaseModel):
     email: EmailStr
     institution: str
     ac_created: datetime
+
+class WriteSensor(BaseModel):
+    name:str
+    data_type: str
+    project_id:int
+
+

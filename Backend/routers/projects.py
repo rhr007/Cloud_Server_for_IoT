@@ -38,6 +38,14 @@ def get_all_projects(db: Session = Depends(get_db), user_id: int = Depends(get_c
     return projects
 
 
+@router.post("/sensors")
+def create_sensors(request_body: schemas.WriteSensor, db: Session = Depends(get_db)):
+    new_sensor = models.Sensor.model_validate(request_body)
+    db.add(new_sensor)
+    db.commit()
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content={'message': 'sensor added'})
+
+
 
 
 def get_date_time():
