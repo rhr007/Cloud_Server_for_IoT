@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 
 import URL from '../URL'
 import axios from 'axios'
 import styles from '../components/Dashboard.module.css'
 import HomePageNavbar from './HomePageNavbar'
+import CreateProject from './CreateProject'
 
 
 
@@ -58,7 +59,9 @@ const Dashboard = () => {
         })
     }
 
-
+    function goToProjectDetails(id){
+        console.log(id);
+    }
 
 
   return (
@@ -68,7 +71,7 @@ const Dashboard = () => {
         <div className={styles.projectContainer}>
             <div className={styles.headline}>
                 <p>Your Project List</p>
-                <button>Create Project</button>
+                <button onClick={() => navigate('/create-project')}>Create Project</button>
             </div>
             {projects.length > 0 ? 
             <table>
@@ -84,7 +87,7 @@ const Dashboard = () => {
                 <tbody>
                     {(projects).map((project) => (
                         <tr key={project.id}>
-                            <td>{project.title}</td>
+                            <td onClick={() => goToProjectDetails(project.id)}>{project.title}</td>
                             <td>{project.project_key}</td>
                             <td>{project.number_of_sensors}</td>
                             <td>{project.created}</td>
