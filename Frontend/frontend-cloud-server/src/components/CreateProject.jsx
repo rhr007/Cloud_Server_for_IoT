@@ -10,6 +10,7 @@ const CreateProject = () => {
     const serverURL = URL();
     const [token, setToken] = useState(sessionStorage.getItem('cloud-token') || "")
     const navigate = useNavigate();
+    let project_id = 0;
 
     const [title, setTitle] = useState("")
     const [number_of_sensors, setNumber_of_sensors] = useState(0)
@@ -54,6 +55,21 @@ const CreateProject = () => {
         .then((response) => {
             if(response.status == 201)
             {
+                project_id = response.data.id
+                sensorNames.map((sensor, index) => {
+                    let sensorData = {
+                        name: sensor,
+                        data_type: dataTypes[index],
+                        project_id: project_id
+                    }
+                    axios.post(`${serverURL}/project/sensors`, sensorData, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }).then(response => console.log(response))
+                    .catch((error) => console.log(error))
+                })
+
                 alert("Project Created Successfully")
                 navigate('/dashboard')
             }
@@ -61,6 +77,22 @@ const CreateProject = () => {
             navigate('/signin')
         })
     }
+
+    // function test(){
+    //     sensorNames.map((sensor, index) => {
+    //         let sensorData = {
+    //             name: sensor,
+    //             data_type: dataTypes[index],
+    //             project_id: 3
+    //         }
+    //         axios.post(`${serverURL}/project/sensors`, sensorData, {
+    //             headers: {
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         }).then(response => console.log(response))
+    //         .catch((error) => console.log(error))
+    //     })
+    // }
   return (
     <>
 

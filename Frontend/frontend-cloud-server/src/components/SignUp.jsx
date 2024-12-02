@@ -39,7 +39,7 @@ const SignUp = () => {
       }).catch(error => {
         if(error.status == 400)
         {
-          alert("This email is already Registered.")
+          alert("This email is already Registered.");
           
         }
       })

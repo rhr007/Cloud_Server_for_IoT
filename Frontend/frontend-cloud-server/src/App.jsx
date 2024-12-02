@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import Activate from './components/Activate'
 import Dashboard from './components/Dashboard'
 import CreateProject from './components/CreateProject'
+import ProjectDetails from './components/ProjectDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,6 +32,7 @@ function App() {
         <Route path='activate' element={<Activate />} />
         <Route path='dashboard'element={<Dashboard />} />
         <Route path='create-project' element={<CreateProject />}/>
+        <Route path='project-details/:id' element={<ProjectDetails />} />
       </Routes>
 
       <Footer />

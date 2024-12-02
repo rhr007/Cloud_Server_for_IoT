@@ -30,7 +30,7 @@ const Dashboard = () => {
             .then(response => {
                 if(response.status == 200)
                 {
-                    console.log(typeof(response.data));
+                    // console.log(typeof(response.data));
                     loadAllProjects();
 
                 }
@@ -61,6 +61,7 @@ const Dashboard = () => {
 
     function goToProjectDetails(id){
         console.log(id);
+        navigate(`/project-details/${id}`)
     }
 
 
