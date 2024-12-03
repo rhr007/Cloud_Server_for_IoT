@@ -3,3 +3,4 @@ sqlmodel
 passlib[bcrypt]
 pyjwt
 pyotp
+nanoid

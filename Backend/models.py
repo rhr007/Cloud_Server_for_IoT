@@ -1,5 +1,5 @@
 from typing import Any, Dict, Tuple
-from sqlmodel import SQLModel, Field
+from sqlmodel import Relationship, SQLModel, Field
 from pydantic import EmailStr
 from nanoid import generate
 from datetime import datetime
@@ -34,15 +34,33 @@ class Project(SQLModel, table=True):
     data_type_of_sensors: str
     created: datetime
 
+    sensors: list["Sensor"] = Relationship(back_populates="project")
+
 
     
 
 class Sensor(SQLModel, table=True):
     __tablename__ = "sensors"
+
     id: int = Field(primary_key=True, index=True, default=None)
     project_id: int = Field(foreign_key="projects.id", index=True)
     name:str
     sensor_key:str = Field(default=None, nullable=True, unique=True)
+    data_type: str
+
+    project: Project | None = Relationship(back_populates="sensors")
+    data: list['SensorData'] = Relationship(back_populates="sensor")
+
+
+class SensorData(SQLModel, table=True):
+    __tablename__ = "sensor-data"
+
+    id: int = Field(primary_key=True, index=True, default=None)
+    sensor_id: int = Field(foreign_key="sensors.id", index=True)
+    value: float | None
+    time: datetime
+
+    sensor: Sensor | None = Relationship(back_populates="data")
 
 
 @event.listens_for(Sensor, "before_insert")

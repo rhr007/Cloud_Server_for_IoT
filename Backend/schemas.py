@@ -53,3 +53,22 @@ class WriteSensor(BaseModel):
     project_id:int
 
 
+
+class DataSchema(BaseModel):
+    id: int
+    value: float | None
+    time: datetime
+
+
+
+class SensorSchema(BaseModel):
+    id: int
+    name: str
+    data: list[DataSchema]
+
+class ProjectSchema(BaseModel):
+    title: str
+    sensors: list[SensorSchema]
+
+
+

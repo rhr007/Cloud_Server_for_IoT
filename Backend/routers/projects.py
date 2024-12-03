@@ -26,7 +26,7 @@ def create_project(request_body: schemas.ProjectCreateBody, db: Session = Depend
     data.project_key = project_key
     db.add(data)
     db.commit()
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content={"detail": "project created"})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content={"detail": "project created", "id": data.id})
 
 
 

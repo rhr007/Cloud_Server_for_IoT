@@ -29,4 +29,4 @@ def create_user(request_body: schemas.RegistrationBody, db: Session = Depends(ge
 
 
 def get_date_time():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.now()
