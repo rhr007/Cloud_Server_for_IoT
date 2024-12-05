@@ -64,11 +64,18 @@ class DataSchema(BaseModel):
 class SensorSchema(BaseModel):
     id: int
     name: str
+
+class SensorSchemaWithData(SensorSchema):
     data: list[DataSchema]
 
 class ProjectSchema(BaseModel):
     title: str
+    number_of_sensors: int
     sensors: list[SensorSchema]
+
+class ProjectSchemaWithData(BaseModel):
+    title: str
+    sensors: list[SensorSchemaWithData]
 
 
 

@@ -45,6 +45,12 @@ def create_sensors(request_body: schemas.WriteSensor, db: Session = Depends(get_
     db.commit()
     return JSONResponse(status_code=status.HTTP_201_CREATED, content={'message': 'sensor added'})
 
+# Read All sensor under a specific project
+@router.get("/sensors/{project_id}", response_model=schemas.ProjectSchema)
+def get_all_sensors(project_id, db: Session = Depends(get_db)):
+    sensors = db.get(models.Project, project_id)
+    return sensors
+
 
 
 
