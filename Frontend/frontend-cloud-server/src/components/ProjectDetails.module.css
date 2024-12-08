@@ -1,0 +1,27 @@
+.tableGraph {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.sensorContainer {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sensorContent {
+    display: flex;
+    gap: 16px;
+}
+
+.tableContainer,
+.graphContainer {
+    flex: 1 1 calc(50% - 8px);
+}
+
+.tableContainer .dataTable,
+.graphContainer .dataGraph {
+    width: 100%;
+    height: 100%;
+}

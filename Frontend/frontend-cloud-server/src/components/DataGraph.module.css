@@ -1,0 +1,7 @@
+.graphDesign {
+    background-color: rgb(246, 255, 247);
+    border: 1px dashed rgb(126, 126, 126);
+    /* max-width: 70%; */
+    max-height: 370px;
+    margin-left: -200px;
+}
