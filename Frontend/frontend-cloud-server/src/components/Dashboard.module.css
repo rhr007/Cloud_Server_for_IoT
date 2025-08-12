@@ -1,11 +1,29 @@
-.projectContainer{
-    background-color: rgb(196, 133, 255);
+.projectContainer {
+    background-color: rgb(245, 239, 252);
 }
-.headline{
+
+.headline {
     background-color: rgb(250, 132, 132);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 40%;
     padding-right: 5%;
+}
+
+.projectDetailsInfor {
+    background-color: rgb(254, 184, 242);
+    justify-items: center;
+    /* padding-top: 2px; */
+    /* border: dashed black; */
+    border-radius: 40px;
+    border: 3px dashed black;
+    margin: 10px;
+    padding: 8px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.projectDetailsInfor:hover {
+    background-color: rgb(184, 254, 210);
 }
